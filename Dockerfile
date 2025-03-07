@@ -23,14 +23,14 @@ RUN apt-get install -y libhiredis-dev
 
 WORKDIR /coturn
 
-COPY turnserver.conf .
 COPY CMakeLists.txt .
 COPY configure .
 COPY Makefile.in .
 COPY src src
 COPY turndb turndb
+COPY turnserver.conf .
 
 RUN ./configure
 RUN make
 
-CMD ["/coturn/bin/turnserver", "-c","../turnserver.conf"]
+CMD ["/coturn/bin/turnserver", "-c","/coturn/turnserver.conf"]
